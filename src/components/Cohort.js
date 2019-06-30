@@ -2,9 +2,9 @@ import React from 'react';
 import Person from './Person';
 import './Cohort.css';
 
-const Cohort = ({people}) => {
+const Cohort = ({ staff, students }) => {
 
-  const personCards = people.map(card => {
+  const staffCards = staff.map(card => {
     return (
       <Person
         id={card.id}
@@ -14,11 +14,31 @@ const Cohort = ({people}) => {
         photo={card.photo}
       />
     )
-  })
+  });
+
+  const studentCards = students.map(card => {
+    return (
+      <Person
+        key={card.id}
+        name={card.name}
+        quote={card.quote}
+        superlative={card.superlative}
+        photo={card.photo}
+      />
+    );
+  });
+
 
   return (
-    <div className="card-container">
-      {personCards}
+    <div>
+      <h2>Staff</h2>
+      <div className="card-container">
+        {staffCards}
+      </div>
+      <h2>Students</h2>
+      <div className="card-container">
+        {studentCards}
+      </div>
     </div>
   )
 }
